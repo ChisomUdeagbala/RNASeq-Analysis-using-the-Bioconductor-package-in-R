@@ -1,0 +1,861 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Deseq2-analysis.R},
+  pdfauthor={Admin},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Deseq2-analysis.R}
+\author{Admin}
+\date{2025-05-06}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{options}\NormalTok{(}\AttributeTok{repos =} \FunctionTok{c}\NormalTok{(}\AttributeTok{CRAN =} \StringTok{"https://cloud.r{-}project.org"}\NormalTok{))}
+
+\CommentTok{\# Install Bioconductor packages}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"BiocManager"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{))}
+  \FunctionTok{install.packages}\NormalTok{(}\StringTok{"BiocManager"}\NormalTok{)}
+
+\CommentTok{\# Install required packages}
+\NormalTok{BiocManager}\SpecialCharTok{::}\FunctionTok{install}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"clusterProfiler"}\NormalTok{,}\StringTok{"GEOquery"}\NormalTok{,  }\StringTok{"org.Hs.eg.db"}\NormalTok{, }\StringTok{"enrichplot"}\NormalTok{, }\StringTok{"DOSE"}\NormalTok{, }\StringTok{"pathview"}\NormalTok{, }\StringTok{"ggplot2"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'getOption("repos")' replaces Bioconductor standard repositories, see
+## 'help("repositories", package = "BiocManager")' for details.
+## Replacement repositories:
+##     CRAN: https://cloud.r-project.org
+\end{verbatim}
+
+\begin{verbatim}
+## Bioconductor version 3.19 (BiocManager 1.30.25), R 4.4.0 (2024-04-24 ucrt)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package(s) not installed when version(s) same as or greater than current; use
+##   `force = TRUE` to re-install: 'clusterProfiler' 'GEOquery' 'org.Hs.eg.db'
+##   'enrichplot' 'DOSE' 'pathview' 'ggplot2'
+\end{verbatim}
+
+\begin{verbatim}
+## Installation paths not writeable, unable to update packages
+##   path: C:/Program Files/R/R-4.4.0/library
+##   packages:
+##     boot, class, cluster, foreign, KernSmooth, lattice, MASS, Matrix, mgcv,
+##     nlme, nnet, rpart, spatial, survival
+\end{verbatim}
+
+\begin{verbatim}
+## Old packages: 'bit', 'broom', 'cli', 'commonmark', 'cpp11', 'curl',
+##   'downloader', 'fs', 'future', 'globals', 'httpuv', 'httr2', 'jsonlite',
+##   'knitr', 'later', 'leidenbase', 'locfit', 'mathjaxr', 'mime', 'miniUI',
+##   'parallelly', 'pillar', 'processx', 'ps', 'R.oo', 'R.utils', 'R6', 'ragg',
+##   'RcppArmadillo', 'RcppTOML', 'RCurl', 'readxl', 'reticulate', 'rlang',
+##   'RSQLite', 'sass', 'scales', 'sctransform', 'Seurat', 'SeuratObject',
+##   'spatstat.data', 'spatstat.explore', 'spatstat.geom', 'spatstat.random',
+##   'spatstat.univar', 'spatstat.utils', 'stringi', 'systemfonts', 'textshaping',
+##   'tinytex', 'tzdb', 'utf8', 'uwot', 'xfun', 'xml2', 'zoo'
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"data.table"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installing package into 'C:/Users/Admin/AppData/Local/R/win-library/4.4'
+## (as 'lib' is unspecified)
+\end{verbatim}
+
+\begin{verbatim}
+## package 'data.table' successfully unpacked and MD5 sums checked
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: cannot remove prior installation of package 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
+## C:\Users\Admin\AppData\Local\R\win-library\4.4\00LOCK\data.table\libs\x64\data_table.dll
+## to
+## C:\Users\Admin\AppData\Local\R\win-library\4.4\data.table\libs\x64\data_table.dll:
+## Permission denied
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: restored 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## The downloaded binary packages are in
+##  C:\Users\Admin\AppData\Local\Temp\RtmpCSlPmO\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"DESeq2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installing package into 'C:/Users/Admin/AppData/Local/R/win-library/4.4'
+## (as 'lib' is unspecified)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'DESeq2' is not available for this version of R
+## 
+## A version of this package for your version of R might be available elsewhere,
+## see the ideas at
+## https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installing package into 'C:/Users/Admin/AppData/Local/R/win-library/4.4'
+## (as 'lib' is unspecified)
+\end{verbatim}
+
+\begin{verbatim}
+## package 'dplyr' successfully unpacked and MD5 sums checked
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: cannot remove prior installation of package 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
+## C:\Users\Admin\AppData\Local\R\win-library\4.4\00LOCK\dplyr\libs\x64\dplyr.dll
+## to C:\Users\Admin\AppData\Local\R\win-library\4.4\dplyr\libs\x64\dplyr.dll:
+## Permission denied
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: restored 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## The downloaded binary packages are in
+##  C:\Users\Admin\AppData\Local\Temp\RtmpCSlPmO\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load necessary libraries}
+\FunctionTok{library}\NormalTok{(clusterProfiler)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'clusterProfiler' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## 
+\end{verbatim}
+
+\begin{verbatim}
+## clusterProfiler v4.12.6 Learn more at https://yulab-smu.top/contribution-knowledge-mining/
+## 
+## Please cite:
+## 
+## Guangchuang Yu, Li-Gen Wang, Yanyan Han and Qing-Yu He.
+## clusterProfiler: an R package for comparing biological themes among
+## gene clusters. OMICS: A Journal of Integrative Biology. 2012,
+## 16(5):284-287
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'clusterProfiler'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(org.Hs.eg.db)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: AnnotationDbi
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: stats4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: BiocGenerics
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'BiocGenerics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     IQR, mad, sd, var, xtabs
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+##     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+##     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+##     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+##     Position, rank, rbind, Reduce, rownames, sapply, setdiff, table,
+##     tapply, union, unique, unsplit, which.max, which.min
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Biobase
+\end{verbatim}
+
+\begin{verbatim}
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     'browseVignettes()'. To cite Bioconductor, see
+##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: IRanges
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'IRanges' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: S4Vectors
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'S4Vectors' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'S4Vectors'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:clusterProfiler':
+## 
+##     rename
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:utils':
+## 
+##     findMatches
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     expand.grid, I, unname
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'IRanges'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:clusterProfiler':
+## 
+##     slice
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:grDevices':
+## 
+##     windows
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'AnnotationDbi'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:clusterProfiler':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(enrichplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'enrichplot' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DOSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'DOSE' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## DOSE v3.30.5  For help: https://yulab-smu.top/biomedical-knowledge-mining-book/
+## 
+## If you use DOSE in published research, please cite:
+## Guangchuang Yu, Li-Gen Wang, Guang-Rong Yan, Qing-Yu He. DOSE: an R/Bioconductor package for Disease Ontology Semantic and Enrichment analysis. Bioinformatics 2015, 31(4):608-609
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pathview)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ##############################################################################
+## Pathview is an open source software package distributed under GNU General
+## Public License version 3 (GPLv3). Details of GPLv3 is available at
+## http://www.gnu.org/licenses/gpl-3.0.html. Particullary, users are required to
+## formally cite the original Pathview paper (not just mention it) in publications
+## or products. For details, do citation("pathview") within R.
+## 
+## The pathview downloads and uses KEGG data. Non-academic uses may require a KEGG
+## license agreement (details at http://www.kegg.jp/kegg/legal.html).
+## ##############################################################################
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.4.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(GEOquery)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting options('download.file.method.GEOquery'='auto')
+\end{verbatim}
+
+\begin{verbatim}
+## Setting options('GEOquery.inmemory.gpl'=FALSE)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DESeq2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: GenomicRanges
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'GenomicRanges' was built under R version 4.4.1
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: GenomeInfoDb
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: SummarizedExperiment
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: MatrixGenerics
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: matrixStats
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'matrixStats' was built under R version 4.4.2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'matrixStats'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:Biobase':
+## 
+##     anyMissing, rowMedians
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MatrixGenerics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:matrixStats':
+## 
+##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+##     colWeightedMeans, colWeightedMedians, colWeightedSds,
+##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+##     rowWeightedSds, rowWeightedVars
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:Biobase':
+## 
+##     rowMedians
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(data.table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'data.table' was built under R version 4.4.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:SummarizedExperiment':
+## 
+##     shift
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:GenomicRanges':
+## 
+##     shift
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:IRanges':
+## 
+##     shift
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:S4Vectors':
+## 
+##     first, second
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.4.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:data.table':
+## 
+##     between, first, last
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:matrixStats':
+## 
+##     count
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:GenomicRanges':
+## 
+##     intersect, setdiff, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:GenomeInfoDb':
+## 
+##     intersect
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:AnnotationDbi':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:IRanges':
+## 
+##     collapse, desc, intersect, setdiff, slice, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:S4Vectors':
+## 
+##     first, intersect, rename, setdiff, setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:Biobase':
+## 
+##     combine
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:BiocGenerics':
+## 
+##     combine, intersect, setdiff, union
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the dataset from GEO}
+\NormalTok{geo\_dataset }\OtherTok{\textless{}{-}} \FunctionTok{getGEO}\NormalTok{(}\StringTok{"GSE234762"}\NormalTok{, }\AttributeTok{GSEMatrix =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Found 1 file(s)
+\end{verbatim}
+
+\begin{verbatim}
+## GSE234762_series_matrix.txt.gz
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{expr\_data }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"RNAseq\_exp\_data.tsv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{series\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"C:/Users/Admin/OneDrive {-} Teesside University/Desktop/GBM\_DEG\_analysis/Human.GRCh38.p13.annot.tsv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\# Merge expression data with gene annotation based on GeneID}
+\NormalTok{merged\_data }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(series\_matrix, expr\_data, }\AttributeTok{by =} \StringTok{"GeneID"}\NormalTok{)}
+\CommentTok{\# Keep only the "Symbol" column and the last 4 columns (expression data)}
+\NormalTok{merged\_data }\OtherTok{\textless{}{-}}\NormalTok{ merged\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Symbol"}\NormalTok{, }\StringTok{"GSM7474303"}\NormalTok{, }\StringTok{"GSM7474304"}\NormalTok{, }\StringTok{"GSM7474305"}\NormalTok{, }\StringTok{"GSM7474306"}\NormalTok{)]}
+\CommentTok{\#colnames(merged\_data)}
+
+\NormalTok{metadata }\OtherTok{\textless{}{-}} \FunctionTok{pData}\NormalTok{(geo\_dataset[[}\DecValTok{1}\NormalTok{]])  }\CommentTok{\# Extract sample metadata}
+\CommentTok{\# Define a named vector for mapping sample titles to groups}
+\NormalTok{group\_mapping }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"GBM8401 cells (bio rep1)"} \OtherTok{=} \StringTok{"Sensitive"}\NormalTok{,}
+  \StringTok{"GBM8401 cells (bio rep2)"} \OtherTok{=} \StringTok{"Sensitive"}\NormalTok{,}
+  \StringTok{"GBM8401 TMZ{-}resistant cells (bio rep1)"} \OtherTok{=} \StringTok{"Resistant"}\NormalTok{,}
+  \StringTok{"GBM8401 TMZ{-}resistant cells (bio rep2)"} \OtherTok{=} \StringTok{"Resistant"}
+\NormalTok{)}
+
+\CommentTok{\# Assign groups based on the title column}
+\NormalTok{metadata}\SpecialCharTok{$}\NormalTok{group }\OtherTok{\textless{}{-}}\NormalTok{ group\_mapping[metadata}\SpecialCharTok{$}\NormalTok{title]}
+
+
+\CommentTok{\# Remove the geneID column from the expression data}
+\NormalTok{expr\_data }\OtherTok{\textless{}{-}}\NormalTok{ merged\_data[, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]  }
+
+
+\CommentTok{\# Convert \textquotesingle{}group\textquotesingle{} to a factor with "Disease" as the reference level}
+\NormalTok{metadata}\SpecialCharTok{$}\NormalTok{group }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(metadata}\SpecialCharTok{$}\NormalTok{group, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Sensitive"}\NormalTok{, }\StringTok{"Resistant"}\NormalTok{))}
+
+\CommentTok{\# Create DESeq2 dataset}
+\NormalTok{dds }\OtherTok{\textless{}{-}} \FunctionTok{DESeqDataSetFromMatrix}\NormalTok{(}\AttributeTok{countData =}\NormalTok{ expr\_data, }
+                              \AttributeTok{colData =}\NormalTok{ metadata, }
+                              \AttributeTok{design =} \SpecialCharTok{\textasciitilde{}}\NormalTok{ group)}
+
+\CommentTok{\# Run DESeq2 differential expression(DE) analysis}
+\NormalTok{dds }\OtherTok{\textless{}{-}} \FunctionTok{DESeq}\NormalTok{(dds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## estimating size factors
+\end{verbatim}
+
+\begin{verbatim}
+## estimating dispersions
+\end{verbatim}
+
+\begin{verbatim}
+## gene-wise dispersion estimates
+\end{verbatim}
+
+\begin{verbatim}
+## mean-dispersion relationship
+\end{verbatim}
+
+\begin{verbatim}
+## final dispersion estimates
+\end{verbatim}
+
+\begin{verbatim}
+## fitting model and testing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DE\_result }\OtherTok{\textless{}{-}} \FunctionTok{results}\NormalTok{(dds, }\AttributeTok{contrast =} \FunctionTok{c}\NormalTok{(}\StringTok{"group"}\NormalTok{, }\StringTok{"Resistant"}\NormalTok{, }\StringTok{"Sensitive"}\NormalTok{))}
+\CommentTok{\#}
+\NormalTok{res\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(DE\_result)  }
+\NormalTok{res\_df}\SpecialCharTok{$}\NormalTok{Symbol }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(res\_df)}
+\CommentTok{\# Merge res\_df with merged\_data by row names}
+\NormalTok{annotated\_result }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(res\_df, merged\_data, }\AttributeTok{by =} \StringTok{"row.names"}\NormalTok{, }\AttributeTok{all.x =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\# Remove the Row.names column }
+\NormalTok{annotated\_result }\OtherTok{\textless{}{-}}\NormalTok{ annotated\_result[, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{merged\_result }\OtherTok{\textless{}{-}}\NormalTok{ annotated\_result[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\FunctionTok{which}\NormalTok{(}\FunctionTok{names}\NormalTok{(annotated\_result) }\SpecialCharTok{==} \StringTok{"Symbol.y"}\NormalTok{))]}
+
+\CommentTok{\# Filter significant DEGs (adjusted p{-}value \textless{} 0.05, |logFC| \textgreater{} 1)}
+\NormalTok{deg\_result }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(merged\_result) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(padj }\SpecialCharTok{\textless{}} \FloatTok{0.05} \SpecialCharTok{\&} \FunctionTok{abs}\NormalTok{(log2FoldChange) }\SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)}
+
+
+\CommentTok{\# Ensure the Entrez IDs are correctly extracted}
+\NormalTok{Gse234762\_result\_table }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"GSE234762.top.tables.tsv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{entrez\_ids }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(Gse234762\_result\_table}\SpecialCharTok{$}\NormalTok{GeneID)  }
+
+\CommentTok{\# Remove any NA values}
+\NormalTok{entrez\_ids }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(entrez\_ids)}
+
+\NormalTok{valid\_ids }\OtherTok{\textless{}{-}}\NormalTok{ entrez\_ids[entrez\_ids }\SpecialCharTok{\%in\%} \FunctionTok{keys}\NormalTok{(org.Hs.eg.db, }\AttributeTok{keytype =} \StringTok{"ENTREZID"}\NormalTok{)]}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Number of valid Entrez IDs:"}\NormalTok{, }\FunctionTok{length}\NormalTok{(valid\_ids), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Number of valid Entrez IDs: 19233
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GO Enrichment Analysis (Biological Process)}
+\NormalTok{go\_results }\OtherTok{\textless{}{-}} \FunctionTok{enrichGO}\NormalTok{(}\AttributeTok{gene =}\NormalTok{ valid\_ids,}
+                       \AttributeTok{OrgDb =}\NormalTok{ org.Hs.eg.db, }
+                       \AttributeTok{keyType =} \StringTok{"ENTREZID"}\NormalTok{, }
+                       \AttributeTok{ont =} \StringTok{"BP"}\NormalTok{,  }\CommentTok{\# Change to "MF" or "CC" if needed}
+                       \AttributeTok{pAdjustMethod =} \StringTok{"BH"}\NormalTok{, }
+                       \AttributeTok{pvalueCutoff =} \FloatTok{0.05}\NormalTok{,  }\CommentTok{\# Increase cutoff}
+                       \AttributeTok{qvalueCutoff =} \FloatTok{0.05}\NormalTok{)}
+
+\CommentTok{\# GO Enrichment Analysis (Molecular functions)}
+\NormalTok{go\_results\_MF }\OtherTok{\textless{}{-}} \FunctionTok{enrichGO}\NormalTok{(}\AttributeTok{gene =}\NormalTok{ valid\_ids,}
+                          \AttributeTok{OrgDb =}\NormalTok{ org.Hs.eg.db, }
+                          \AttributeTok{keyType =} \StringTok{"ENTREZID"}\NormalTok{, }
+                          \AttributeTok{ont =} \StringTok{"MF"}\NormalTok{,  }\CommentTok{\# Change to "MF" or "CC" if needed}
+                          \AttributeTok{pAdjustMethod =} \StringTok{"BH"}\NormalTok{, }
+                          \AttributeTok{pvalueCutoff =} \FloatTok{0.05}\NormalTok{,  }\CommentTok{\# Increase cutoff}
+                          \AttributeTok{qvalueCutoff =} \FloatTok{0.05}\NormalTok{)}
+
+\CommentTok{\# GO Enrichment Analysis (Cellular components)}
+\NormalTok{go\_results\_cc }\OtherTok{\textless{}{-}} \FunctionTok{enrichGO}\NormalTok{(}\AttributeTok{gene =}\NormalTok{ valid\_ids,}
+                          \AttributeTok{OrgDb =}\NormalTok{ org.Hs.eg.db, }
+                          \AttributeTok{keyType =} \StringTok{"ENTREZID"}\NormalTok{, }
+                          \AttributeTok{ont =} \StringTok{"CC"}\NormalTok{,  }\CommentTok{\# Change to "MF" or "CC" if needed}
+                          \AttributeTok{pAdjustMethod =} \StringTok{"BH"}\NormalTok{, }
+                          \AttributeTok{pvalueCutoff =} \FloatTok{0.05}\NormalTok{,  }\CommentTok{\# Increase cutoff}
+                          \AttributeTok{qvalueCutoff =} \FloatTok{0.05}\NormalTok{)}
+
+\CommentTok{\# Visualization of molecular function Enrichment Results}
+\CommentTok{\# GO Enrichment: Dot Plot}
+\FunctionTok{dotplot}\NormalTok{(go\_results\_MF, }\AttributeTok{showCategory=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Top 20 GO Enriched Molecular Function"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Deseq2-analysis_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GO Enrichment: Bar Plot}
+\FunctionTok{barplot}\NormalTok{(go\_results\_MF, }\AttributeTok{showCategory=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Top 20 GO Enriched Biological Processes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Deseq2-analysis_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualization of cellular components Enrichment Results}
+\CommentTok{\# GO Enrichment: Dot Plot}
+\FunctionTok{dotplot}\NormalTok{(go\_results\_cc, }\AttributeTok{showCategory=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Top 20 GO Enriched Cellular components"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Deseq2-analysis_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GO Enrichment: Bar Plot}
+\FunctionTok{barplot}\NormalTok{(go\_results\_cc, }\AttributeTok{showCategory=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Top 20 GO Enriched Biological Processes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Deseq2-analysis_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\end{document}
